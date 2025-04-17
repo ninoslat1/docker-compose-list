@@ -1,0 +1,15 @@
+global:
+  scrape_interval: 5s
+  
+# scrape_configs :
+#   - job_name: "parkinglock-payment-1"
+#     static_configs :
+#       - targets: ["host.docker.internal:8001"]
+
+scrape_configs:
+  - job_name: "discovered-apps"
+    file_sd_configs:
+      - files:
+          - /etc/prometheus/targets/targets.json
+        refresh_interval: 1m
+
