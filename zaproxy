@@ -1,0 +1,17 @@
+services:
+  zap:
+    image: ghcr.io/zaproxy/zaproxy:stable
+    container_name: zap
+    restart: unless-stopped
+
+    ports:
+      - "8080:8080" # Web GUI
+      - "8090:8090" # Internal Webswing
+
+    volumes:
+      - ./zap-data:/zap/wrk
+
+    command: >
+      zap-webswing.sh
+
+    user: "0:0"
