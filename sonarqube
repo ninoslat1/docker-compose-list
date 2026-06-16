@@ -1,0 +1,21 @@
+services:
+  sonarqube:
+    image: sonarqube@sha256:4671314254b0892186ebf46350e8a3a99e2505212bb6fa68bc4dc71ef3ac9c66
+    container_name: sonarqube
+    restart: unless-stopped
+
+    ports:
+      - "9000:9000"
+
+    environment:
+      SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: "true"
+
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_logs:/opt/sonarqube/logs
+      - sonarqube_extensions:/opt/sonarqube/extensions
+
+volumes:
+  sonarqube_data:
+  sonarqube_logs:
+  sonarqube_extensions:
