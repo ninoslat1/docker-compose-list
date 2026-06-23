@@ -1,0 +1,14 @@
+
+services:
+  dragonfly:
+    image: docker.dragonflydb.io/dragonflydb/dragonfly
+    container_name: dragonfly
+
+    ports:
+      - "6379:6379"
+
+    ulimits:
+      memlock: -1
+
+    command: >
+      --requirepass=YOUR_PASSWORD_HERE
